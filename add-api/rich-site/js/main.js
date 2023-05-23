@@ -8,32 +8,32 @@ const isMobile = !!new MobileDetect(window.navigator.userAgent).mobile();
  */
 const showTab = (tabName) => {
   // すでに表示されている場合は何もせずに終了
-  if ($(`#${tabName}`).is(':visible')) {
+  if ($(`#${tabName}`).is(":visible")) {
     return;
   }
 
-  const tabsContainer = $(`a[href='#${tabName}']`).closest('.tabs');
+  const tabsContainer = $(`a[href='#${tabName}']`).closest(".tabs");
   // .tabs__menu liのうちtabNameに該当するものにだけactiveクラスを付ける
-  tabsContainer.find('.tabs__menu li').removeClass('active');
+  tabsContainer.find(".tabs__menu li").removeClass("active");
   tabsContainer
     .find(`.tabs__menu a[href='#${tabName}']`)
-    .parent('li')
-    .addClass('active');
+    .parent("li")
+    .addClass("active");
 
   // .tabs__contentの直下の要素をすべて非表示
-  tabsContainer.find('.tabs__content > *').css({ display: 'none' });
+  tabsContainer.find(".tabs__content > *").css({ display: "none" });
   // #<tabName>と.tabs__content .<tabName>を表示
   tabsContainer
     .find(`#${tabName}, .tabs__content .${tabName}`)
     .css({
-      display: 'block',
+      display: "block",
       opacity: 0.7,
     })
     .animate(
       {
         opacity: 1,
       },
-      400,
+      400
     );
 };
 
@@ -59,39 +59,39 @@ const showParallax = () => {
   const offsetXSmall = Math.round(scrollTop / parallaxXSpeedSmall);
   const offsetYSmall = Math.round(scrollTop / parallaxYSpeedSmall);
 
-  $('.puppies').css({
-    'background-position':
+  $(".puppies").css({
+    "background-position":
       // 一番上
       `${-offsetX}px ${-offsetY}px, ${
         // 上から2番目
         offsetXSmall
-      }px ${-offsetYSmall}px, `
+      }px ${-offsetYSmall}px, ` +
       // 一番下
-      + '0% 0%',
+      "0% 0%",
   });
 
-  $('.kittens').css({
-    'background-position':
+  $(".kittens").css({
+    "background-position":
       // 一番上
       `${offsetX}px ${-offsetY}px, ${
         // 上から2番目
         -offsetXSmall
-      }px ${-offsetYSmall}px, `
+      }px ${-offsetYSmall}px, ` +
       // 一番下
-      + '0% 0%',
+      "0% 0%",
   });
 };
 
 // パララックスを初期化する関数
 const initParallax = () => {
-  $(window).off('scroll', showParallax);
+  $(window).off("scroll", showParallax);
 
   if (!isMobile) {
     // モバイルブラウザでなければパララックスを適用
     showParallax();
 
     // スクロールのたびにshowParallax関数を呼ぶ
-    $(window).on('scroll', showParallax);
+    $(window).on("scroll", showParallax);
   }
 };
 
@@ -105,10 +105,10 @@ const initParallax = () => {
  * animatedクラスを持つ要素が画面内に入ったら
  * Animate.cssのfadeInUpエフェクトを適用
  */
-$('.animated').waypoint({
+$(".animated").waypoint({
   handler(direction) {
-    if (direction === 'down') {
-      $(this.element).addClass('fadeInUp');
+    if (direction === "down") {
+      $(this.element).addClass("fadeInUp");
       this.destroy();
     }
   },
@@ -116,22 +116,22 @@ $('.animated').waypoint({
    * 要素の上端が画面のどの位置に来たときにhandlerメソッドを呼び出すか指定
    * 0%なら画面の一番上、100%なら画面の一番下に来たときに呼び出される
    */
-  offset: '100%',
+  offset: "100%",
 });
 
-$(window).on('resize', () => {
+$(window).on("resize", () => {
   // ウインドウがリサイズされるとここが実行される
   initParallax();
 });
 
 // タブがクリックされたらコンテンツを表示
-$('.tabs__menu a').on('click', (e) => {
-  const tabName = $(e.currentTarget).attr('href');
+$(".tabs__menu a").on("click", (e) => {
+  const tabName = $(e.currentTarget).attr("href");
 
   // hrefにページ遷移しない
   e.preventDefault();
 
-  if (tabName[0] === '#') {
+  if (tabName[0] === "#") {
     // hrefの先頭の#を除いたものをshowTab()関数に渡す
     showTab(tabName.substring(1));
   }
@@ -141,33 +141,33 @@ $('.tabs__menu a').on('click', (e) => {
  * ナビゲーションバーのリンクをクリックしたら、
  * スムーズにスクロールしながら対象位置に移動
  */
-$('.nav-link').on('click', (e) => {
-  const destination = $(e.target).attr('href');
+$(".nav-link").on("click", (e) => {
+  const destination = $(e.target).attr("href");
 
   // 本来のクリックイベントは処理しない
   e.preventDefault();
 
-  $('html, body').animate(
+  $("html, body").animate(
     {
       scrollTop: $(destination).offset().top,
     },
-    1000,
+    1000
   );
 
   // ハンバーガーメニューが開いている場合は閉じる
-  $('.navbar-toggler:visible').trigger('click');
+  $(".navbar-toggler:visible").trigger("click");
 });
 
 // d-inline-blockクラスの付いた要素にMagnific Popupを適用
-$('.d-inline-block').magnificPopup({
-  type: 'image',
+$(".d-inline-block").magnificPopup({
+  type: "image",
   gallery: { enabled: true },
 
   /**
    * ポップアップに適用されるクラス。
    * ここではフェードイン・アウト用のmfp-fadeクラスを適用。
    */
-  mainClass: 'mfp-fade',
+  mainClass: "mfp-fade",
 
   // ポップアップが非表示になるまでの待ち時間
   removalDelay: 300,
@@ -181,78 +181,74 @@ $('.d-inline-block').magnificPopup({
 
 // モバイルブラウザでは静止画を表示し、それ以外では動画を表示
 if (isMobile) {
-  $('.top__bg').css({
-    'background-image': 'url(video/top-video-still.jpg)',
+  $(".top__bg").css({
+    "background-image": "url(video/top-video-still.jpg)",
   });
 } else {
-  $('.top__video').css({ display: 'block' });
+  $(".top__video").css({ display: "block" });
 }
 
 // 初期状態として1番目のタブを表示
-showTab('puppies-1');
-showTab('kittens-1');
+showTab("puppies-1");
+showTab("kittens-1");
 
 // パララックスを初期化する
 initParallax();
 
-
 // Flickr API key
-const API_KEY = 'df5b51680612c75674c5ff87e3d22817';
+const API_KEY = "df5b51680612c75674c5ff87e3d22817";
 
 // Flickr画像データのURLを返す
 const getFlickrImageURL = (photo, size) => {
-  let url = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${
-    photo.secret
-  }`;
+  let url = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}`;
   if (size) {
     // サイズ指定ありの場合
     url += `_${size}`;
   }
-  url += '.jpg';
+  url += ".jpg";
   return url;
 };
 
 // Flickr画像の元ページのURLを返す
-const getFlickrPageURL = (photo) => `https://www.flickr.com/photos/${photo.owner}/${photo.id}`;
+const getFlickrPageURL = (photo) =>
+  `https://www.flickr.com/photos/${photo.owner}/${photo.id}`;
 
 // Flickr画像のaltテキストを返す
 const getFlickrText = (photo) => {
   let text = `"${photo.title}" by ${photo.ownername}`;
-  if (photo.license === '4') {
+  if (photo.license === "4") {
     // Creative Commons Attribution（CC BY）ライセンス
-    text += ' / CC BY';
+    text += " / CC BY";
   }
   return text;
 };
 
 // リクエストパラメータを作る
 const parameters_cat = $.param({
-  method: 'flickr.photos.search',
+  method: "flickr.photos.search",
   api_key: API_KEY,
-  text: 'cat', // 検索テキスト
-  sort: 'interestingness-desc', // 興味深さ順
+  text: "cat", // 検索テキスト
+  sort: "interestingness-desc", // 興味深さ順
   per_page: 4, // 取得件数
-  license: '4', // Creative Commons Attributionのみ
-  extras: 'owner_name,license', // 追加で取得する情報
-  format: 'json', // レスポンスをJSON形式に
+  license: "4", // Creative Commons Attributionのみ
+  extras: "owner_name,license", // 追加で取得する情報
+  format: "json", // レスポンスをJSON形式に
   nojsoncallback: 1, // レスポンスの先頭に関数呼び出しを含めない
 });
 const url_cat = `https://api.flickr.com/services/rest/?${parameters_cat}`;
 
 const parameters_dog = $.param({
-  method: 'flickr.photos.search',
+  method: "flickr.photos.search",
   api_key: API_KEY,
-  text: 'dog', // 検索テキスト
-  sort: 'interestingness-desc', // 興味深さ順
+  text: "dog", // 検索テキスト
+  sort: "interestingness-desc", // 興味深さ順
   per_page: 4, // 取得件数
-  license: '4', // Creative Commons Attributionのみ
-  extras: 'owner_name,license', // 追加で取得する情報
-  format: 'json', // レスポンスをJSON形式に
+  license: "4", // Creative Commons Attributionのみ
+  extras: "owner_name,license", // 追加で取得する情報
+  format: "json", // レスポンスをJSON形式に
   nojsoncallback: 1, // レスポンスの先頭に関数呼び出しを含めない
 });
 const url_dog = `https://api.flickr.com/services/rest/?${parameters_dog}`;
-
-
 
 // 猫の画像を検索して表示
 fetch(url_cat)
@@ -261,12 +257,12 @@ fetch(url_cat)
     console.log(data);
 
     // データが取得できなかった場合
-    if (data.stat !== 'ok') {
-      throw new Error('データの取得に失敗しました。');
+    if (data.stat !== "ok") {
+      throw new Error("データの取得に失敗しました。");
     }
 
     // 空の<div>を作る
-    const $div = $('<div>');
+    const $div = $("<div>");
 
     for (let i = 0; i < data.photos.photo.length; i++) {
       const photo = data.photos.photo[i];
@@ -274,47 +270,48 @@ fetch(url_cat)
 
       // $divに <a href="..." ...><img src="..." ...></a> を追加する
       $div.append(
-        $('<div>', {
-          class: 'image-gallery__item',
-          'data-text': photoText,
-          href: 'noopener noreferrer',
-          target: '_blank',
+        $("<div>", {
+          class: "image-gallery__item",
+          "data-text": photoText,
+          href: "noopener noreferrer",
+          target: "_blank",
         }).append(
-          $('<a>', {
-            class: 'd-inline-block img-tooltip',
-            'data-text': photoText,
+          $("<a>", {
+            class: "d-inline-block img-tooltip",
+            "data-text": photoText,
             href: getFlickrPageURL(photo),
-            rel: 'noopener noreferrer',
-            target: '_blank', // リンクを新規タブで開く
+            rel: "noopener noreferrer",
+            target: "_blank", // リンクを新規タブで開く
           }).append(
-            $('<img>', {
-              src: getFlickrImageURL(photo, 'q'),
+            $("<img>", {
+              src: getFlickrImageURL(photo, "q"),
               alt: photoText,
               width: 150,
               height: 150,
-            }),
-          ),
-        ),
+            })
+          )
+        )
       );
     }
     // $divを#mainに追加する
-    $div.appendTo('#gallery_content');
-  }).catch((error) => {
+    $div.appendTo("#gallery_content");
+  })
+  .catch((error) => {
     console.error(`エラーが発生しました： ${error.message}`);
   });
 
-  fetch(url_dog)
+fetch(url_dog)
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
 
     // データが取得できなかった場合
-    if (data.stat !== 'ok') {
-      throw new Error('データの取得に失敗しました。');
+    if (data.stat !== "ok") {
+      throw new Error("データの取得に失敗しました。");
     }
 
     // 空の<div>を作る
-    const $div = $('<div>');
+    const $div = $("<div>");
 
     for (let i = 0; i < data.photos.photo.length; i++) {
       const photo = data.photos.photo[i];
@@ -322,31 +319,32 @@ fetch(url_cat)
 
       // $divに <a href="..." ...><img src="..." ...></a> を追加する
       $div.append(
-        $('<div>', {
-          class: 'image-gallery__item',
-          'data-text': photoText,
-          href: 'noopener noreferrer',
-          target: '_blank',
+        $("<div>", {
+          class: "image-gallery__item",
+          "data-text": photoText,
+          href: "noopener noreferrer",
+          target: "_blank",
         }).append(
-          $('<a>', {
-            class: 'd-inline-block img-tooltip',
-            'data-text': photoText,
+          $("<a>", {
+            class: "d-inline-block img-tooltip",
+            "data-text": photoText,
             href: getFlickrPageURL(photo),
-            rel: 'noopener noreferrer',
-            target: '_blank', // リンクを新規タブで開く
+            rel: "noopener noreferrer",
+            target: "_blank", // リンクを新規タブで開く
           }).append(
-            $('<img>', {
-              src: getFlickrImageURL(photo, 'q'),
+            $("<img>", {
+              src: getFlickrImageURL(photo, "q"),
               alt: photoText,
               width: 150,
               height: 150,
-            }),
-          ),
-        ),
+            })
+          )
+        )
       );
     }
     // $divを#mainに追加する
-    $div.appendTo('#gallery_content');
-  }).catch((error) => {
+    $div.appendTo("#gallery_content");
+  })
+  .catch((error) => {
     console.error(`エラーが発生しました： ${error.message}`);
   });

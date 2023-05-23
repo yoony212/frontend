@@ -1,0 +1,73 @@
+/* カルーセルの表示エリア */
+.carousel {
+  /* 子要素でposition:absoluteを使うために必要 */
+  position: relative;
+
+  /* 400x400の領域からはみ出た部分は非表示 */
+  overflow: hidden;
+  width: 400px;
+  height: 400px;
+
+  /* 左右中央寄せ */
+  margin: 0 auto;
+}
+
+/* 矢印の基本スタイル */
+.carousel-control {
+  display: block;
+  height: 50px;
+  width: 30px;
+  background-color: #f0f0f0;
+  color: #333;
+  line-height:45px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 2rem;
+  opacity: .5;
+
+  /* 透明度をふわっと変える演出 */
+  transition: opacity .15s;
+}
+/* マウスが乗ったら濃くする */
+.carousel-control:hover {
+  opacity: .8;
+}
+
+/* 左矢印 */
+.carousel-control-prev {
+  position: absolute;
+  left: 0;
+  top: 175px;
+  text-indent: -2px;  /* 矢印の横方向の位置を調整する */
+}
+
+/* 右矢印 */
+.carousel-control-next {
+  position: absolute;
+  right: 0;
+  top: 175px;
+  text-indent: 2px;
+}
+
+/* スライドのul */
+.slides {
+  /* .carouselの左上隅に表示 */
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /* 横に長いひと続きの写真にする */
+  width: 99999px;
+
+  /* ulのデフォルトスタイルを消去 */
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* 各スライドを横につなげる */
+.slides li {
+  float: left;
+  width: 400px;
+  height: 400px;
+}

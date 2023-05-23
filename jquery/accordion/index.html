@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery テスト</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div class="accordion">
+      <section>
+        <h2 class="accordion-title"><a href="#">タイトル1</a></h2>
+        <!-- コンテンツを最初から表示する場合はaccordion-content-activeクラスを付ける -->
+        <div class="accordion-content accordion-content-active">コンテンツ1</div>
+      </section>
+
+      <section>
+        <h2 class="accordion-title"><a href="#">タイトル2</a></h2>
+        <div class="accordion-content">コンテンツ2</div>
+      </section>
+
+      <section>
+        <h2 class="accordion-title"><a href="#">タイトル3</a></h2>
+        <div class="accordion-content">コンテンツ3</div>
+      </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

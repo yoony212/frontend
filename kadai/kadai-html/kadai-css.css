@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #333;
+  font-size: 14px;
+}
+
+h1,h2,h3,h4,h5,h6, p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+header {
+  background: #ffcccc;
+  width: 1000px;
+}
+
+#wrapper {
+  display: flex;
+  width: 1000px;
+}
+
+#main {
+  background: #ccffcc;
+  width: 700px;
+}
+
+#menu {
+  background: #ccccff;
+  width: 300px;
+}
+
+footer {
+  background: #ffccff;
+  width: 1000px;
+}

@@ -1,0 +1,58 @@
+/* 下にだけ余白を付ける */
+p {
+  margin: 0 0 1em 0;
+}
+
+/* 各スライドの基本スタイル */
+.parallax-section {
+  /* 画面全体を覆う */
+  height: 100vh;
+  width: 100%;
+
+  /* 背景が画面全体を覆うようにする */
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* 1枚目のスライド */
+.parallax-section-1 {
+  background-image: url(cat1.jpg);
+}
+
+/* 2枚目のスライド */
+.parallax-section-2 {
+  background-image: url(cat2.jpg);
+}
+
+/* 3枚目のスライド */
+.parallax-section-3 {
+  background-image: url(cat3.jpg);
+}
+
+/* 4枚目のスライド */
+.parallax-section-4 {
+  background-image: url(cat4.jpg);
+}
+
+/* テキストのスタイル */
+.text {
+  /* 左右中央寄せ */
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* テキストをセンタリング */
+  text-align: center;
+
+  font-size: 2rem;
+  color: #eee;
+
+  /* 影を付けて読みやすくする */
+  text-shadow:
+  -1px -1px 6px #000,
+  1px -1px 6px #000,
+  -1px 1px 6px #000,
+  1px 1px 6px #000;
+}

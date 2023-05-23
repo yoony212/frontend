@@ -1,0 +1,30 @@
+body {
+  color: #3F4548;
+}
+
+/* アコーディオンのタイトル部分 */
+.accordion-title {
+  margin: 0;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  font-size: 1rem;
+}
+.accordion-title a {
+  display: block;
+  padding: 6px;
+  color: #3F4548;
+  text-decoration: none;
+}
+
+/* アコーディオンのコンテンツ部分 */
+.accordion-content {
+  /* 初期状態では非表示 */
+  display: none;
+  height: 60px;
+  padding: 12px 6px;
+  border: 1px solid #ccc;
+}
+/* accordion-content-activeクラスが付いているものは初期状態で表示しておく */
+.accordion-content.accordion-content-active {
+  display: block;
+}

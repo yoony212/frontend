@@ -33,7 +33,7 @@ const showTab = (tabName) => {
       {
         opacity: 1,
       },
-      400,
+      400
     );
 };
 
@@ -65,9 +65,9 @@ const showParallax = () => {
       `${-offsetX}px ${-offsetY}px, ${
         // 上から2番目
         offsetXSmall
-      }px ${-offsetYSmall}px, `
+      }px ${-offsetYSmall}px, ` +
       // 一番下
-      + '0% 0%',
+      '0% 0%',
   });
 
   $('.kittens').css({
@@ -76,9 +76,9 @@ const showParallax = () => {
       `${offsetX}px ${-offsetY}px, ${
         // 上から2番目
         -offsetXSmall
-      }px ${-offsetYSmall}px, `
+      }px ${-offsetYSmall}px, ` +
       // 一番下
-      + '0% 0%',
+      '0% 0%',
   });
 };
 
@@ -111,16 +111,6 @@ $('.animated').waypoint({
       $(this.element).addClass('fadeInUp');
       $(this.element).removeClass('fadeOutUp');
     }
-  },
-  /**
-   * 要素の上端が画面のどの位置に来たときにhandlerメソッドを呼び出すか指定
-   * 0%なら画面の一番上、100%なら画面の一番下に来たときに呼び出される
-   */
-  offset: '100%',
-});
-
-$('.animated').waypoint({
-  handler(direction) {
     if (direction === 'up') {
       $(this.element).addClass('fadeOutUp');
       $(this.element).removeClass('fadeInUp');
@@ -161,7 +151,7 @@ $('.nav-link').on('click', (e) => {
     {
       scrollTop: $(destination).offset().top,
     },
-    1000,
+    1000
   );
 
   // ハンバーガーメニューが開いている場合は閉じる

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue.js Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <p>
+        パスワードの文字数：<br />
+        <input type="text" v-model="password_length" />
+      </p>
+      <div>生成されたパスワード：{{ genPW() }}</div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

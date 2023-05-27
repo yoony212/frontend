@@ -96,10 +96,10 @@ body {
   margin-bottom: 18px;
 
   /* 0.1秒かけて値を変化させるエフェクト */
-  -webkit-transition: -webkit-transform .1s;
-  transition: -webkit-transform .1s;
-  transition: transform .1s;
-  transition: transform .1s, -webkit-transform .1s;
+  -webkit-transition: -webkit-transform 0.1s;
+  transition: -webkit-transform 0.1s;
+  transition: transform 0.1s;
+  transition: transform 0.1s, -webkit-transform 0.1s;
 }
 
 .image-gallery__item:hover {
@@ -132,7 +132,7 @@ body {
 }
 
 .top__catchphrase {
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .top__bg {
@@ -262,11 +262,11 @@ footer {
 .tabs__menu li {
   display: inline-block;
   margin-bottom: 12px;
-  opacity: .5;
+  opacity: 0.5;
 
   /* 各プロパティをふわっと変える演出 */
-  -webkit-transition: all .15s;
-  transition: all .15s;
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
 }
 .tabs__menu a {
   display: block;
@@ -276,7 +276,7 @@ footer {
 
 /* 非選択のタブにマウスを乗せたら色を変える */
 .tabs__menu li:not(.active):hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 /* 選択中のタブ */
@@ -310,13 +310,13 @@ footer {
 .mfp-fade.mfp-bg {
   opacity: 0;
 
-  -webkit-transition: all .3s ease-out;
-  -moz-transition: all .3s ease-out;
-  transition: all .3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 /* オーバーレイする背景 開始時アニメーション */
 .mfp-fade.mfp-bg.mfp-ready {
-  opacity: .8;
+  opacity: 0.8;
 }
 /* オーバーレイする背景 終了時アニメーション */
 .mfp-fade.mfp-bg.mfp-removing {
@@ -327,9 +327,9 @@ footer {
 .mfp-fade.mfp-wrap .mfp-content {
   opacity: 0;
 
-  -webkit-transition: all .3s ease-out;
-  -moz-transition: all .3s ease-out;
-  transition: all .3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 /* コンテンツ 開始時アニメーション */
 .mfp-fade.mfp-wrap.mfp-ready .mfp-content {
@@ -436,7 +436,7 @@ footer {
   min-width: 200px;
   padding: 7px;
 
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: #fff;
   text-align: center;
 
@@ -450,8 +450,8 @@ footer {
   opacity: 0;
   visibility: hidden;
 
-  box-shadow: 0 3px 6px rgba(255,255,255,.3);
-  transition: opacity .3s ease-out;
+  box-shadow: 0 3px 6px rgba(255, 255, 255, 0.3);
+  transition: opacity 0.3s ease-out;
 }
 
 /* ツールチップの矢印 */
@@ -479,7 +479,7 @@ footer {
   opacity: 0;
   visibility: hidden;
 
-  transition: opacity .3s ease-out;
+  transition: opacity 0.3s ease-out;
 }
 
 .img-tooltip:hover:before,

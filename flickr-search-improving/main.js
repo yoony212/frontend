@@ -149,7 +149,7 @@ new Vue({
           // 検索テキストに該当する画像データがない場合
           if (fetchedPhotos.length === 0) {
             // TODO: メソッドを呼び出して、現在の状態を「検索テキストに該当する画像データがない状態」に変更する
-
+            this.toNotFound();
             return;
           }
 

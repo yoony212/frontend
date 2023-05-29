@@ -56,25 +56,14 @@ const getFlickrText = (photo) => {
  */
 
 new Vue({
-  el: '#gallery', // elオプションの値に '#gallery' を設定
-
-  components: {
-    // ローカル登録するコンポーネントを設定
-    // ( コンポーネントを利用しない場合は components: {}, は削除すること )
-  },
+  el: '#gallery_content', // elオプションの値に '#gallery' を設定
 
   data: {
-    prevSearchText: '',
     photos: [],
   },
 
-  created() {
-    // Vueが読み込まれたときに実行する処理を定義
-  },
-
   methods: {
-    // 呼び出して利用できる関数を定義( aaa や bbb の関数名を書き換えること。関数の追加も可能 )
-    fetchImagesFromFlickr() {
+    fetchImagesFromFlickr(searchText) {
       const url = getRequestURL(searchText);
       fetch(url)
         .then((response) => response.json())
@@ -84,6 +73,7 @@ new Vue({
           }
 
           const fetchedPhotos = data.photos.photo;
+          const arrangedPhotos = [];
 
           for (let i = 0, len = fetchedPhotos.length; i < len; i++) {
             const photo = fetchedPhotos[i];
@@ -93,9 +83,17 @@ new Vue({
               pageURL: getFlickrPageURL(photo),
               text: getFlickrText(photo),
             };
+            arrangedPhotos.push(arrangedPhoto);
           }
-          this.photos = arrangedphotos;
+          this.photos = arrangedPhotos;
         });
     },
+  },
+
+  created() {
+    const gallery_list = ['cat', 'dog'];
+    for (let i = 0; i < gallery_list.length; i++) {
+      fetchImagesFromFlickr(gallery_list[i]);
+    }
   },
 });

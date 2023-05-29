@@ -435,35 +435,22 @@
       <div class="gallery__phrase">ギャラリー</div>
       <h2 class="gallery__title">Gallery</h2>
       <div class="image-gallery" id="gallery">
-        <template>
-          <div
-            class="image-gallery__item"
-            v-for="photo in photos"
-            v-bind:key="photo.id"
+        <div
+          class="image-gallery__item"
+          v-for="photo in photos"
+          v-bind:key="photo.id"
+        >
+          <a
+            class="d-inline-block img-tooltip"
+            v-bind:href="photo.pageURL"
+            target="_blank"
           >
-            <a
-              class="d-inline-block img-tooltip"
-              v-bind:href="photo.pageURL"
-              target="_blank"
-            >
-              <img
-                v-bind:src="photo.imageURL"
-                v-bind:alt="photo.text"
-                class="img-fluid"
-                width="150"
-                height="150"
-              />
-            </a>
-          </div>
-        </template>
-        <div class="image-gallery__item">
-          <a class="d-inline-block" href="img/kitten1.jpg">
             <img
+              v-bind:src="photo.imageURL"
+              v-bind:alt="photo.text"
               class="img-fluid"
-              src="img/gallery-thumbnail/kitten1.jpg"
               width="150"
               height="150"
-              alt="シェパード"
             />
           </a>
         </div>

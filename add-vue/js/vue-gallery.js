@@ -64,7 +64,8 @@ new Vue({
   },
 
   data: {
-    // 利用するデータを設定
+    prevSearchText: '',
+    photos: [],
   },
 
   created() {
@@ -73,7 +74,28 @@ new Vue({
 
   methods: {
     // 呼び出して利用できる関数を定義( aaa や bbb の関数名を書き換えること。関数の追加も可能 )
-    aaa() {},
-    bbb() {},
+    fetchImagesFromFlickr() {
+      const url = getRequestURL(searchText);
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.stat !== 'ok') {
+            throw new Error('データの取得に失敗しました。');
+          }
+
+          const fetchedPhotos = data.photos.photo;
+
+          for (let i = 0, len = fetchedPhotos.length; i < len; i++) {
+            const photo = fetchedPhotos[i];
+            const arrangedPhoto = {
+              id: photo.id,
+              imageURL: getFlickrImageURL(photo, 'q'),
+              pageURL: getFlickrPageURL(photo),
+              text: getFlickrText(photo),
+            };
+          }
+          this.photos = arrangedphotos;
+        });
+    },
   },
 });

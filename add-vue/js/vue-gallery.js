@@ -74,7 +74,6 @@ new Vue({
           }
 
           const fetchedPhotos = data.photos.photo;
-          const arrangedPhotos = [];
 
           for (let i = 0, len = fetchedPhotos.length; i < len; i++) {
             const photo = fetchedPhotos[i];

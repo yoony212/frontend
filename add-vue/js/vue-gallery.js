@@ -59,6 +59,7 @@ new Vue({
   el: '#gallery_content', // elオプションの値に '#gallery' を設定
 
   data: {
+    gallery_list: ['cat', 'dog'],
     photos: [],
   },
 
@@ -83,17 +84,15 @@ new Vue({
               pageURL: getFlickrPageURL(photo),
               text: getFlickrText(photo),
             };
-            arrangedPhotos.push(arrangedPhoto);
+            this.photos.push(arrangedPhoto);
           }
-          this.photos = arrangedPhotos;
         });
     },
   },
 
   created() {
-    const gallery_list = ['cat', 'dog'];
-    for (let i = 0; i < gallery_list.length; i++) {
-      fetchImagesFromFlickr(gallery_list[i]);
+    for (let i = 0; i < this.gallery_list.length; i++) {
+      this.fetchImagesFromFlickr(this.gallery_list[i]);
     }
   },
 });

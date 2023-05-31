@@ -56,7 +56,7 @@ const getFlickrText = (photo) => {
  */
 
 new Vue({
-  el: '#gallery_content', // elオプションの値に '#gallery' を設定
+  el: '#gallery', // elオプションの値に '#gallery' を設定
 
   data: {
     gallery_list: ['cat', 'dog'],

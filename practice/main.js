@@ -1,7 +1,7 @@
-new Vue({
-  el: '#example',
-  components: {
-    carousel: VueCarousel.Carousel,
-    slide: VueCarousel.Slide,
+Vue.createApp({
+  data() {
+    return {
+      os: '',
+    };
   },
-});
+}).mount('#app');
